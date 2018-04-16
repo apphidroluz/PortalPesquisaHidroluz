@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+		<property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+		<property name="hibernate.connection.url">jdbc:postgresql://hidro_pesquisa.postgresql.dbaas.com.br/hidro_pesquisa</property>
+		<property name="hibernate.connection.username">hidro_pesquisa</property>
+		<property name="hibernate.hbm2ddl.auto">update</property>
+		<property name="hibernate.connection.password">XevuWEq5</property>
+		
+		
+		
+		<mapping class="entity.Clientes" />
+		<mapping class="entity.Cont_cli" />
+		<mapping class="entity.Funcionario" />
+		<mapping class="entity.Pesquisa" />
+		
+
+
+
+	</session-factory>
+</hibernate-configuration>

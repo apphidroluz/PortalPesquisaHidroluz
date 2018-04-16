@@ -1,0 +1,244 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+
+<ui:composition template="/template.xhtml">
+	<ui:define name="conteudo">
+
+		<h:form id="form1">
+
+			<div align="center">
+
+
+				<p:panel header="Contatos do #{mb.buscado.razsoc_nome}">
+					<h:outputText value="#{mb.buscado.endereco}">
+					</h:outputText>
+
+					<p:dataTable id="tbl2" rows="10" value="#{mb.buscado.contatos}"
+						var="contatos" paginator="true" reflow="true"
+						selection="#{mb.clientes}">
+
+						<p:column headerText="Nome " style="width: 40%">
+
+							<h:outputText value="#{contatos.nome}">
+							</h:outputText>
+
+						</p:column>
+
+						<p:column headerText="Telefone" style="width: 40%">
+
+							<h:outputText align="center" value="#{contatos.telefone}">
+							</h:outputText>
+
+						</p:column>
+
+					</p:dataTable>
+				</p:panel>
+			</div>
+			<br></br>
+
+			<div align="center">
+				<p:panel header="Informações do  Entrevistado" style="width:100%">
+
+					<p:panelGrid columns="6">
+						<p:outputLabel value="Funcionário: " />
+
+
+						<p:selectOneMenu id="Idfuncionario" value="#{mb.func_selec}" required="true" requiredMessage="Selecione o Funcionário."
+							converter="classeConverter" style="width:125px">
+
+							<f:selectItem itemLabel="Selecione" />
+							<f:selectItems value="#{mb.funcionarios}" var="funcionarios"
+								itemLabel="#{funcionarios.nome}" itemValue="#{funcionarios}" />
+						</p:selectOneMenu>
+
+
+						<h:outputText value="Nome: " />
+						<p:inputText value="#{mb.pesquisa.nome}" size="15" required="true" requiredMessage="Digite o nome do entrevistado"></p:inputText>
+
+						<h:outputText value="Cargo : " />
+						<p:inputText value="#{mb.pesquisa.cargo}" size="15" required="true" requiredMessage="Digite o cargo do entrevistado"></p:inputText>
+
+					</p:panelGrid>
+
+				</p:panel>
+			</div>
+
+			<br></br>
+
+
+
+			<div align="left">
+				<p:panel header="Recebe mensalmente o extrato?" style="width:100%">
+
+					<h:panelGrid columns="2" cellpadding="5">
+
+						<p:selectOneRadio id="resp01" value="#{mb.pesquisa.resp1}" required="true">
+
+							<f:selectItem itemLabel="SIM " itemValue="true" />
+							<f:selectItem itemLabel="NÃO" itemValue="false" />
+
+						</p:selectOneRadio>
+
+					</h:panelGrid>
+
+					<h7>Tem Alguma Sugestão de melhoria ?</h7>
+
+					<p:inputTextarea rows="2" value="#{mb.pesquisa.obs_resp1}"
+						style="width:100%;height:50px"></p:inputTextarea>
+
+				</p:panel>
+			</div>
+
+
+
+
+			<div align="left">
+				<p:panel header="Conhece o Portal Medição ?" style="width:100%">
+
+					<h:panelGrid columns="2" cellpadding="5">
+
+						<p:selectOneRadio id="resp02" value="#{mb.pesquisa.resp2}" required="true">
+
+							<f:selectItem itemLabel="SIM" itemValue="true" />
+							<f:selectItem itemLabel="NÃO" itemValue="false" />
+
+						</p:selectOneRadio>
+
+					</h:panelGrid>
+
+					<h7>Tem Alguma Sugestão de melhoria ?</h7>
+
+					<p:inputTextarea rows="2" value="#{mb.pesquisa.obs_resp2}"
+						style="width:100%;height:50px"></p:inputTextarea>
+
+				</p:panel>
+			</div>
+
+
+
+			<div align="left">
+				<p:panel header="Conhece o Aplicativo ?" style="width:100%">
+
+					<h:panelGrid columns="2" cellpadding="5">
+
+						<p:selectOneRadio id="resp03" value="#{mb.pesquisa.resp3}" required="true">
+
+							<f:selectItem itemLabel="SIM " itemValue="true" />
+							<f:selectItem itemLabel="NÃO" itemValue="false" />
+
+						</p:selectOneRadio>
+
+					</h:panelGrid>
+
+					<h7>Tem Alguma Sugestão de melhoria ?</h7>
+
+					<p:inputTextarea rows="2" value="#{mb.pesquisa.obs_resp3}"
+						style="width:100%;height:50px"></p:inputTextarea>
+
+				</p:panel>
+			</div>
+
+			<div align="left">
+				<p:panel
+					header="Teria Interesse em receber materiais informativos ?"
+					style="width:100%">
+
+					<h:panelGrid columns="2" cellpadding="5">
+
+						<p:selectOneRadio id="resp04" value="#{mb.pesquisa.resp4}" required="true">
+
+							<f:selectItem itemLabel="SIM " itemValue="true" />
+							<f:selectItem itemLabel="NÃO" itemValue="false" />
+
+						</p:selectOneRadio>
+
+					</h:panelGrid>
+					<h7>Quais ?</h7>
+
+					<br></br>
+
+					<p:selectBooleanCheckbox value="#{mb.pesquisa.obs_resp4_cons_equi}" />
+					<h:outputText value="	Consumo médio por equipamentos; " />
+
+
+					<br></br>
+
+					<p:selectBooleanCheckbox value="#{mb.pesquisa.obs_resp4_ent_med}" />
+					<h:outputText value="	Entenda a Medição; " />
+
+
+					<br></br>
+					
+					<p:selectBooleanCheckbox value="#{mb.pesquisa.obs_resp4_pro_med}" />
+					<h:outputText value="	Procedimentos Medição; " />
+
+
+
+
+
+				</p:panel>
+			</div>
+
+
+			<div align="left">
+				<p:panel header="Satisfação com a Hidroluz ?" style="width:100%">
+					<p:growl id="messages" showDetail="true" />
+					<h:panelGrid columns="2" cellpadding="5">
+						<h:outputText value="Atendimento:" />
+						<p:rating value="#{mb.pesquisa.resp5_1}" required="true" requiredMessage="Selecione uma nota." />
+
+						<h:outputText value="Relatórios" />
+						<p:rating value="#{mb.pesquisa.resp5_2}" required="true" requiredMessage="Selecione uma nota." />
+
+						<h:outputText value="Benefício da Medição" />
+						<p:rating value="#{mb.pesquisa.resp5_3}"  required="true" requiredMessage="Selecione uma nota." />
+
+						<h:outputText value="Geral" />
+						<p:rating value="#{mb.pesquisa.resp5_4}"  required="true" requiredMessage="Selecione uma nota."/>
+
+
+					</h:panelGrid>
+
+
+
+				</p:panel>
+			</div>
+
+
+
+			<div align="left">
+				<p:panel header="Observações e Reclamações:" style="width:100%">
+					<p:inputTextarea rows="2" style="width:100%;height:50px"
+						value="#{mb.pesquisa.resp6}"></p:inputTextarea>
+
+				</p:panel>
+			</div>
+
+			<p:commandButton value="Gravar" action="#{mb.gravar}" ajax="false" />
+
+			<p:commandButton value="Cancelar"
+				onclick="PF('dialogCancelar').show();" />
+
+			<p:dialog closable="true" modal="true" widgetVar="dialogCancelar"
+				height="100">
+				<p:outputLabel value="Deseja cancelar?"></p:outputLabel>
+				<div align="center">
+					<p:commandButton value="Sim" action="#{mb.cancelar}" ajax="false" />
+					<p:commandButton value="Nao" onclick="PF('dialogCancelar').hide();"
+						ajax="false" />
+				</div>
+			</p:dialog>
+
+		</h:form>
+
+	</ui:define>
+</ui:composition>
+</html>

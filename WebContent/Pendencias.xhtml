@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	
+	
+
+<ui:composition template="/template.xhtml">
+
+	<ui:define name="conteudo">
+
+		<h:form id="form2">
+			<div align="center">
+				<p:panel header="Consulta de Clientes" style="width:50%">
+
+					<p:panelGrid columns="3">
+						<h:outputText value="Digite o Codigo do Cliente :" />
+						<p:inputText value="#{mb.clientes.codigo}" size="8"></p:inputText>
+						<p:commandButton value="Iniciar Pesquisa" action="#{mb.buscareIniciarPesq}" ajax="false"
+							icon="ui-icon-search" />
+					</p:panelGrid>
+
+					<p:messages></p:messages>
+
+				</p:panel>
+			</div>
+		</h:form>
+		
+	<br></br>
+		<p:panel header="Envios Pendentes">
+			<h:form id="form1">
+				<p:dataTable id="tbl2" rows="10" value="#{mb.clientesPendentes}"
+					var="clientesPendentes" paginator="true" reflow="true"
+					selection="#{mb.clientes}">
+
+					<p:column selectionMode="single" style="width: 5%"></p:column>
+
+
+					<p:column headerText="Codigo" width="100">
+
+						<h:outputText value="#{clientesPendentes.codigo}">
+						</h:outputText>
+
+					</p:column>
+
+					<p:column headerText="Nome " style="width: 60%">
+
+						<h:outputText value="#{clientesPendentes.razsoc_nome}">
+						</h:outputText>
+
+					</p:column>
+					
+				    <p:column headerText="Contato" style="width: 20%">
+
+						<h:outputText value="#{clientesPendentes.contato1}">
+						
+						</h:outputText>
+
+					</p:column>
+
+					<p:column headerText="Telefone" style="width: 15%">
+
+						<h:outputText value="#{clientesPendentes.telefone}">
+						
+						</h:outputText>
+
+					</p:column>
+
+				</p:dataTable>
+				<br></br>
+				<div align="right">
+					<p:commandButton value="Iniciar Pesquisa" action="#{mb.buscareIniciarPesq}"
+						ajax="false" align="center" icon="ui-icon-search" />
+				</div>
+
+			</h:form>
+		</p:panel>
+	</ui:define>
+</ui:composition>
+</html>
